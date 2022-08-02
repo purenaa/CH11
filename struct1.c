@@ -18,6 +18,8 @@ int main()
 
 	//자료형      구조체변수
 	struct EMPLOYEE emps = { "홍길동", 3500000, 175, "서울시 강남구 100" };			//초기화
+	struct EMPLOYEE *ptr;
+
 	EMP tmp;
 
 	printf("%d, %d \n", sizeof(emps), sizeof(struct EMPLOYEE));
@@ -39,10 +41,16 @@ int main()
 								  emps.height, emps.comAddr);
 
 	tmp = emps;
-	printf("%s, %d, %.2f, %s \n", emps.name, emps.salary,
-								  emps.height, emps.comAddr);
 
+	printf("%s, %d, %.2f, %s \n", tmp.name, tmp.salary,
+								  tmp.height, tmp.comAddr);
 
+	printf("ptr sizeof: %d \n", sizeof(ptr));
+
+	ptr = &emps;		// -> : 조체 포인터 연산자
+	printf("%s, %d, %.2f, %s \n", ptr->name, ptr->salary,
+								  (*ptr).height, (*ptr).comAddr);
+	
 
 	return 0;
 }
